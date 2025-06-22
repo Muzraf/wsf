@@ -5,7 +5,7 @@
  * should not be modified by hand.
  */
 
-package com.muzraf.hate;
+package com.muzraf.wsf;
 
 public final class R {
   public static final class id {

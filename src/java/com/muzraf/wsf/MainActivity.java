@@ -1,4 +1,4 @@
-package com.muzraf.hate;
+package com.muzraf.wsf;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
     private LinearLayout ll;
     private CountDownTimer timer;
     private long rmsuf = 30*60*1000;
-    private long msme = 2*1000;
+    private long msme = 180*1000;
     private Boolean paused = true;
     private NumberFormat f = new DecimalFormat("00");
     private MediaPlayer mp;
@@ -33,7 +33,7 @@ public class MainActivity extends Activity implements View.OnClickListener{
         t3 = findViewById(R.id.text_paused);
         ll = findViewById(R.id.llayout);
 
-        t1.setText("walk slow");
+        t1.setText("Time");
         ll.setOnClickListener(this);
 
         t2.setText("00:30:00");
@@ -62,7 +62,13 @@ public class MainActivity extends Activity implements View.OnClickListener{
             timer.cancel();
             t3.setText("Paused");
         } else {
-            t3.setText("");
+            if ((rmsuf/msme)  % 2 == 0) {
+                t3.setText("walk slow");
+            } else {
+                t3.setText("walk fast");
+            }
+            //t3.setText("");
+            mp.start();
             timer = new CountDownTimer(rmsuf, 1000) {
                 @Override
                 public void onTick(long msuf) {
@@ -77,11 +83,11 @@ public class MainActivity extends Activity implements View.OnClickListener{
                         } else {
                             s = "walk fast";
                         }
-                        t1.setText(s);
+                        t3.setText(s);
                         mp.start();
                     } else {
                         long k = msuf % msme;
-                        t3.setText(Long.toString(k));
+                        //t1.setText(Long.toString(k));
                     }
                     t2.setText(f.format(hour) + ":" + f.format(minute) + ":" + f.format(second));
                 }

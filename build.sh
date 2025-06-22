@@ -1,9 +1,9 @@
 
 
 ANDROID_JAR=~/android.jar
-PACKAGE_NAME=com.muzraf.hate
-PACKAGE_NAME_SLASH=com/muzraf/hate
-APK_NAME=hate.apk
+PACKAGE_NAME=com.muzraf.wsf
+PACKAGE_NAME_SLASH=com/muzraf/wsf
+APK_NAME=wsf.apk
 
 mkdir -p __build
 echo "aapt2 compile"
